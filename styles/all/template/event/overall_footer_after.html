@@ -1,0 +1,8 @@
+{% if S_DISPLAY_STATS_OUTPUT %}
+	<script>
+		var showText = '{{ lang('VIEW') | escape('js') }}';
+		var hideText = '{{ lang('HIDE') | escape('js') }}';
+	</script>
+
+	{% INCLUDEJS '@david63_statsonindex/statsonindex_fn.js' %}
+{% endif %}

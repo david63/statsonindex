@@ -1,0 +1,23 @@
+services:
+    david63.statsonindex.listener:
+        class: david63\statsonindex\event\listener
+        arguments:
+            - '@config'
+            - '@template'
+            - '@user'
+            - '@dbal.conn'
+            - '@cache'
+            - '@auth'
+            - '@language'
+        tags:
+            - { name: event.listener }
+
+    david63.statsonindex.admin.controller:
+        class: david63\statsonindex\controller\admin_controller
+        arguments:
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@language'
+            - '@log'
