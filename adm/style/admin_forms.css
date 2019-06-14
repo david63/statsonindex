@@ -272,11 +272,9 @@ Pagination
 /* ---------
 Panels
 --------- */
-.head-panel, .head-panel-error {
+.head-panel, .head-panel-error, .head-panel-version {
 	width: auto;
 	height: auto;
-	-webkit-border-radius: 1em;
-	-moz-border-radius: 1em;
 	border-radius: 1em;
 	border-width: 0.1em;
 	border-style: solid;
@@ -291,10 +289,17 @@ Panels
 	background-color: #ffffff;
 }
 
-.head-panel-error {
-	background-color: #BC2A4D;
+.head-panel-error, .head-panel-version {
 	color: #FFFFFF;
 	text-align: center;
+}
+
+.head-panel-error {
+	background-color: #BC2A4D;
+}
+
+.head-panel-version {
+	background-color: #228822;
 }
 
 .head-title {
@@ -311,18 +316,24 @@ Panels
 }
 
 fieldset {
-	-webkit-border-radius: 1em;
-	-moz-border-radius: 1em;
 	border-radius: 1em;
 	box-shadow: 0.15em 0.2em 0 0 #899599;
+}
+
+fieldset.align {
+	clear: both;
+	text-align: right;
+}
+
+.rtl fieldset.align {
+	clear: both;
+	text-align: left;
 }
 
 legend {
 	margin-left: 1em;
 	top: 0.15em;
 	width: auto;
-	-webkit-border-radius: 1em;
-	-moz-border-radius: 1em;
 	border-radius: 1em;
 	border-width: 0.1em;
 	border-style: solid;
@@ -353,8 +364,6 @@ Tables
 	table-layout: fixed;
     display: table;
 	width: 100%;
-	-webkit-border-radius: 1em;
-	-moz-border-radius: 1em;
 	border-radius: 1em;
 	border: 1px solid #CCCFD3;
 	background-color: #FFFFFF;
@@ -366,7 +375,7 @@ Tables
 	display: table-header-group;
 }
 
-.table-header-cell, .table-header-cell-left, .table-header-cell-right, .table-header-cell-select {
+.table-header-cell, .table-header-cell-left, .table-header-cell-right, .table-header-cell-narrow, .table-header-cell-wide, .table-header-cell-select {
 	display: table-cell;
 	padding: 4px 5px;
 	color: #FFFFFF;
@@ -396,12 +405,19 @@ Tables
 
 .table-header-cell-right {
 	border-top-right-radius: 1em;
-
 }
 
 .rtl .table-header-cell-right {
 	border-top-left-radius: 1em;
 	border-top-right-radius: 0;
+}
+
+.table-header-cell-narrow {
+	width: 200px;
+}
+
+.table-header-cell-wide {
+	width: 500px;
 }
 
 .table-header-cell-select {
@@ -419,8 +435,11 @@ Tables
 	display: table-row-group;
 }
 
-.table-row1 {
+.table-row1, .table-row2, .table-row-span {
 	display: table-row;
+}
+
+.table-row1 {
 	background-color: #F9F9F9;
 }
 
@@ -429,12 +448,26 @@ Tables
 	background-color: #DCEBFE;
 }
 
-.table-body-cell, .table-body-cell-bold, .table-body-cell-select {
+.table-row11 {
+	width: auto !important;
+	min-width: inherit;
+	background-color: #F9F9F9;
+	margin: auto;
+	display: table-row;
+	position: relative;
+}
+
+.table-row-span {
+	display: none;
+	width: 700px;
+}
+
+.table-body-cell, .table-body-cell-bold, .table-body-cell-select, .table-body-cell-span, .table-body-cell-narrow, .table-body-cell-wide, .table-body-cell-centre {
 	display: table-cell;
 	text-align: left;
 	vertical-align: middle;
 	font-size: 0.85em;
-	padding: 4px 5px;
+	padding: 4px 0 4px 5px;
 	line-height: 1.20em;
 	border-right: 1px solid #FFFFFF;
 }
@@ -447,9 +480,32 @@ Tables
 	font-weight: bold;
 }
 
-.table-body-cell-select {
-	width: 10%;
+.table-body-cell-span {
+	width: auto !important;
+    margin: auto;
 }
+
+.table-body-cell-narrow {
+	width: 200px;
+	vertical-align: top;
+}
+
+.table-body-cell-wide {
+	width: 500px;
+}
+
+.table-body-cell-centre {
+	text-align: center;
+}
+
+.shaded {
+	background-color: #EBEBEB;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
 
 /* ---------
 bbCode buttons
@@ -498,39 +554,28 @@ Version
 	text-align: center;
 	color: #FFFFFF;
 	font-size: 0.8em;
-	font: Tahoma, Arial, sans-serif;
 	font-weight: bold;
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-top: 4px;
+	padding: 4px 5px 0 5px
 }
 
 .version-text {
-	-webkit-border-radius: 4px 0 0 4px;
-	-moz-border-radius: 4px 0 0 4px;
 	border-radius: 4px 0 0 4px;
 	background-color: #2E2E2E;
 	float: left;
 }
 
 .rtl .version-text {
-	-webkit-border-radius: 0 4px 4px 0;
-	-moz-border-radius: 0 4px 4px 0;
 	border-radius: 0 4px 4px 0;
 	float: right;
 }
 
 .version-data {
-	-webkit-border-radius: 0 4px 4px 0;
-	-moz-border-radius: 0 4px 4px 0;
 	border-radius: 0 4px 4px 0;
 	background-color:#CC7A00;
 	float: right;
 }
 
 .rtl .version-data {
-	-webkit-border-radius: 4px 0 0 4px;
-	-moz-border-radius: 4px 0 0 4px;
 	border-radius: 4px 0 0 4px;
 	float: left;
 }
@@ -539,22 +584,25 @@ Version
 /* ---------
 PayPal button
 --------- */
+.aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	padding-top: 30px;
+}
+
+.aligner-item {
+    max-width: 50%;
+}
+
 .paypal_btn {
-	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
 	padding: 6px 30px;
-	border: 0.15em solid ##46d96c;
 	border-radius: 20px;
-	background: #ffca76;
 	background: linear-gradient(to bottom, #ffca76 5%, #fffbf3 100%);
-	height: auto;
-	width: auto;
-	color: #3300FF;;
-	text-decoration: none;
+	color: #3300FF;
 	font-style: italic;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 22px;
 	box-shadow: 0.2em 0.2em 0em 0em #899599;
 }
 
@@ -567,5 +615,29 @@ PayPal button
 	content: "\f1ed";
 	font-family: FontAwesome;
 	padding-right: 10px;
-	font-size: 16px;
+	font-size: 24px;
+}
+
+
+/* ---------
+* show key
+--------- */
+
+td.showkey {
+   cursor: pointer;
+}
+
+tr.rowkey {
+	display: none;
+}
+
+/* ---------
+* disableext
+--------- */
+p.disable-ext-message {
+	text-align: center;
+	margin-top: 10px;
+	font-weight: bold;
+	color: #666666;
+	font-size: 1.5em;
 }

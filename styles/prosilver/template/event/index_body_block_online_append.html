@@ -1,5 +1,5 @@
 {% if S_DISPLAY_STATS_OUTPUT && S_SHOW_USERS %}
-	<br /><br />
+	<br><br>
 	<strong>{USERS_TFHOUR_TOTAL}</strong>
 	<div class="toggle"><p>
 
@@ -8,7 +8,7 @@
 		{user.USERNAME_FULL}{% if not user.S_LAST_ROW %}{{ lang('COMMA_SEPARATOR') }}{% endif %}
 	{% endfor %}
 	{% if S_SHOW_BOTS %}
-		<br /><br />
+		<br><br>
 		<strong>{{ lang('BOTS') }}</strong> {{ lang('COLON') }}
 		{% for bot in lastvisit_bot %}
 			{bot.USERNAME_FULL}{% if not bot.S_LAST_ROW %}{{ lang('COMMA_SEPARATOR') }}{% endif %}

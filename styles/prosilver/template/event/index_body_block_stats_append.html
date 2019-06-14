@@ -1,11 +1,11 @@
 {% if S_DISPLAY_STATS_OUTPUT and S_SHOW_STATS %}
-	<br /><br />
+	<br><br>
 	<strong>{{ lang('TWENTYFOURHOUR_STATS') }}</strong> &bull; {TFHOUR_POSTS} &bull; {TFHOUR_TOPICS} &bull; {TFHOUR_USERS}
 	<div class="toggle">
-		<p>{% if S_SHOW_SUMMARY %}&bull; {TOTAL_POSTS} {% endif %}&bull; {POSTS_PER_YEAR} &bull; {POSTS_PER_DAY} &bull; {POSTS_PER_TOPIC} &bull; {POSTS_PER_USER}<br />
-		{% if S_SHOW_SUMMARY %}&bull; {TOTAL_TOPICS} {% endif %}&bull; {TOPICS_PER_YEAR} &bull; {TOPICS_PER_DAY} &bull; {TOPICS_PER_USER}<br />
-		{% if S_SHOW_SUMMARY %}&bull; {TOTAL_USERS} {% endif %}&bull; {USERS_PER_YEAR} &bull; {USERS_PER_DAY}<br />
-		&bull; {TOTAL_FILES} &bull; {FILES_PER_YEAR} &bull; {FILES_PER_DAY} &bull; {FILES_PER_USER}<br />
+		<p>{% if S_SHOW_SUMMARY %}&bull; {TOTAL_POSTS} {% endif %}&bull; {POSTS_PER_YEAR} &bull; {POSTS_PER_DAY} &bull; {POSTS_PER_TOPIC} &bull; {POSTS_PER_USER}<br>
+		{% if S_SHOW_SUMMARY %}&bull; {TOTAL_TOPICS} {% endif %}&bull; {TOPICS_PER_YEAR} &bull; {TOPICS_PER_DAY} &bull; {TOPICS_PER_USER}<br>
+		{% if S_SHOW_SUMMARY %}&bull; {TOTAL_USERS} {% endif %}&bull; {USERS_PER_YEAR} &bull; {USERS_PER_DAY}<br>
+		&bull; {TOTAL_FILES} &bull; {FILES_PER_YEAR} &bull; {FILES_PER_DAY} &bull; {FILES_PER_USER}<br>
 		&bull; {{ lang('START_DATE') }}  <strong>{START_DATE}{% if S_SHOW_DAYS %} ({ONLINE_FOR_DAYS} {{ lang('DAYS') }}){% endif %}</strong></p>
 	</div>
 {% endif %}

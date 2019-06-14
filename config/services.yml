@@ -1,3 +1,6 @@
+imports:
+     - { resource: phpbb_tables.yml }
+
 services:
     david63.statsonindex.listener:
         class: david63\statsonindex\event\listener
@@ -9,6 +12,7 @@ services:
             - '@cache'
             - '@auth'
             - '@language'
+            - '%tables%'
         tags:
             - { name: event.listener }
 
@@ -21,3 +25,9 @@ services:
             - '@user'
             - '@language'
             - '@log'
+            - '@david63.statsonindex.core.functions'
+
+    david63.statsonindex.core.functions:
+        class: david63\statsonindex\core\functions
+        arguments:
+            - '@ext.manager'

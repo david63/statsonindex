@@ -1,12 +1,11 @@
-{% include 'overall_header.html' %}
-{% include '@david63_statsonindex/head_panel.html' %}
+{% include '@' ~ NAMESPACE ~ '/head_panel.html' %}
 
 <form id="announceonindex" method="post" action="{U_ACTION}">
 	<fieldset>
 		<legend>{{ lang('STATS_ON_INDEX_OPTIONS') }}</legend>
 
 		<dl>
-			<dt><label for="statsonindex_users">{{ lang('SHOW_USERS') }}{{ lang('COLON') }}</label><br /><span>{{ lang('SHOW_USERS_EXPLAIN') }}</span></dt>
+			<dt><label for="statsonindex_users">{{ lang('SHOW_USERS') }}{{ lang('COLON') }}</label><br><span>{{ lang('SHOW_USERS_EXPLAIN') }}</span></dt>
 			<dd>
 				<input type="radio" id="statsonindex_users1" name="statsonindex_users" value="1"{% if SHOW_USERS %} checked="checked"{% endif %} />
 				<label class="set" for="statsonindex_users1">{{ lang('YES') }}</label>
@@ -16,7 +15,7 @@
 		</dl>
 
 		<dl>
-			<dt><label for="statsonindex_bots">{{ lang('INCLUDE_BOTS') }}{{ lang('COLON') }}</label><br /><span>{{ lang('INCLUDE_BOTS_EXPLAIN') }}</span></dt>
+			<dt><label for="statsonindex_bots">{{ lang('INCLUDE_BOTS') }}{{ lang('COLON') }}</label><br><span>{{ lang('INCLUDE_BOTS_EXPLAIN') }}</span></dt>
 			<dd>
 				<input type="radio" id="statsonindex_bots1" name="statsonindex_bots" value="1"{% if INCLUDE_BOTS %} checked="checked"{% endif %} />
 				<label class="set" for="statsonindex_bots1">{{ lang('YES') }}</label>
@@ -26,7 +25,7 @@
 		</dl>
 
 		<dl>
-			<dt><label for="statsonindex_stats">{{ lang('SHOW_STATS') }}{{ lang('COLON') }}</label><br /><span>{{ lang('SHOW_STATS_EXPLAIN') }}</span></dt>
+			<dt><label for="statsonindex_stats">{{ lang('SHOW_STATS') }}{{ lang('COLON') }}</label><br><span>{{ lang('SHOW_STATS_EXPLAIN') }}</span></dt>
 			<dd>
 				<input type="radio" id="statsonindex_stats1" name="statsonindex_stats" value="1"{% if SHOW_STATS %} checked="checked"{% endif %} />
 				<label class="set" for="statsonindex_stats1">{{ lang('YES') }}</label>
@@ -36,7 +35,7 @@
 		</dl>
 
 		<dl>
-			<dt><label for="statsonindex_admin">{{ lang('ADMIN_STATS') }}{{ lang('COLON') }}</label><br /><span>{{ lang('ADMIN_STATS_EXPLAIN') }}</span></dt>
+			<dt><label for="statsonindex_admin">{{ lang('ADMIN_STATS') }}{{ lang('COLON') }}</label><br><span>{{ lang('ADMIN_STATS_EXPLAIN') }}</span></dt>
 			<dd>
 				<input type="radio" id="statsonindex_admin1" name="statsonindex_admin" value="1"{% if ADMIN_STATS %} checked="checked"{% endif %} />
 				<label class="set" for="statsonindex_admin1">{{ lang('YES') }}</label>
@@ -46,7 +45,7 @@
 		</dl>
 
 		<dl>
-			<dt><label for="statsonindex_guests">{{ lang('GUEST_STATS') }}{{ lang('COLON') }}</label><br /><span>{{ lang('GUEST_STATS_EXPLAIN') }}</span></dt>
+			<dt><label for="statsonindex_guests">{{ lang('GUEST_STATS') }}{{ lang('COLON') }}</label><br><span>{{ lang('GUEST_STATS_EXPLAIN') }}</span></dt>
 			<dd>
 				<input type="radio" id="statsonindex_guests1" name="statsonindex_guests" value="1"{% if GUEST_STATS %} checked="checked"{% endif %} />
 				<label class="set" for="statsonindex_guests1">{{ lang('YES') }}</label>
@@ -56,7 +55,7 @@
 		</dl>
 
 		<dl>
-			<dt><label for="statsonindex_days">{{ lang('INCLUDE_DAYS') }}{{ lang('COLON') }}</label><br /><span>{{ lang('INCLUDE_DAYS_EXPLAIN') }}</span></dt>
+			<dt><label for="statsonindex_days">{{ lang('INCLUDE_DAYS') }}{{ lang('COLON') }}</label><br><span>{{ lang('INCLUDE_DAYS_EXPLAIN') }}</span></dt>
 			<dd>
 				<input type="radio" id="statsonindex_days1" name="statsonindex_days" value="1"{% if INCLUDE_DAYS %} checked="checked"{% endif %} />
 				<label class="set" for="statsonindex_days1">{{ lang('YES') }}</label>
@@ -66,7 +65,7 @@
 		</dl>
 
 		<dl>
-			<dt><label for="statsonindex_summary">{{ lang('INCLUDE_SUMMARY') }}{{ lang('COLON') }}</label><br /><span>{{ lang('INCLUDE_SUMMARY_EXPLAIN') }}</span></dt>
+			<dt><label for="statsonindex_summary">{{ lang('INCLUDE_SUMMARY') }}{{ lang('COLON') }}</label><br><span>{{ lang('INCLUDE_SUMMARY_EXPLAIN') }}</span></dt>
 			<dd>
 				<input type="radio" id="statsonindex_summary1" name="statsonindex_summary" value="1"{% if INCLUDE_SUMMARY %} checked="checked"{% endif %} />
 				<label class="set" for="statsonindex_summary1">{{ lang('YES') }}</label>
@@ -86,5 +85,4 @@
 	</fieldset>
 </form>
 
-{% include '@david63_statsonindex/donate.html' %}
-{% include 'overall_footer.html' %}
+{% include '@' ~ NAMESPACE ~ '/donate.html' %}

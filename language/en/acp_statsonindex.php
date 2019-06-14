@@ -50,6 +50,9 @@ $lang = array_merge($lang, array(
 	'INCLUDE_SUMMARY'			=> 'Repeat summary items',
 	'INCLUDE_SUMMARY_EXPLAIN'	=> 'Include the summary items with the extended statistics.',
 
+	'NEW_VERSION'				=> 'New Version',
+	'NEW_VERSION_EXPLAIN'		=> 'There is a newer version of this extension available.',
+
 	'SHOW_STATS'				=> 'Show extended statistics',
 	'SHOW_STATS_EXPLAIN'		=> 'Show the extended statistics on the index page.',
 	'SHOW_USERS'				=> 'Show user statistics',

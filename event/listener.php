@@ -37,18 +37,22 @@ class listener implements EventSubscriberInterface
 	/** @var \phpbb\language\language */
 	protected $language;
 
+	/** @var string phpBB tables */
+	protected $tables;
+
 	/**
 	* Constructor for listener
 	*
 	* @param \phpbb\config\config				$config		Config object
 	* @param \phpbb\template\template\template	$template	Template object
 	* @param \phpbb\user                		$user		User object
-	* @param \phpbb\auth\auth 					$auth
-	* @param phpbb\language\language	$language
+	* @param \phpbb\auth\auth 					$auth		Auth object
+	* @param \phpbb\language\language			$language	Language object
+	* @param array								tables		phpBB db tables
 	*
 	* @access public
 	*/
-	public function __construct(\phpbb\config\config $config, \phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, $cache, \phpbb\auth\auth $auth, \phpbb\language\language $language)
+	public function __construct(\phpbb\config\config $config, \phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, $cache, \phpbb\auth\auth $auth, \phpbb\language\language $language, $tables)
 	{
 		$this->config	= $config;
 		$this->template	= $template;
@@ -57,6 +61,7 @@ class listener implements EventSubscriberInterface
 		$this->cache	= $cache;
 		$this->auth		= $auth;
 		$this->language	= $language;
+		$this->tables	= $tables;
 	}
 
 	/**
@@ -205,10 +210,10 @@ class listener implements EventSubscriberInterface
 			// Grab a list of users who are currently online and users who have visited in the last 24 hours
 			$sql_ary = array(
 				'SELECT'	=> 'u.user_id, u.user_colour, u.username, u.user_type',
-				'FROM'		=> array(USERS_TABLE => 'u'),
+				'FROM'		=> array($this->tables['users'] => 'u'),
 				'LEFT_JOIN'	=> array(
 					array(
-						'FROM'	=> array(SESSIONS_TABLE => 's'),
+						'FROM'	=> array($this->tables['sessions'] => 's'),
 							'ON'	=> 's.session_user_id = u.user_id',
 					),
 				),
@@ -248,7 +253,7 @@ class listener implements EventSubscriberInterface
 
 			// Total new posts in the last 24 hours
 			$sql = 'SELECT COUNT(post_id) AS new_posts
-				FROM ' . POSTS_TABLE . '
+				FROM ' . $this->tables['posts'] . '
 				WHERE post_time > ' . (int)$interval;
 
 			$result				= $this->db->sql_query($sql);
@@ -258,7 +263,7 @@ class listener implements EventSubscriberInterface
 
 			// Total new topics in the last 24 hours
 			$sql = 'SELECT COUNT(topic_id) AS new_topics
-				FROM ' . TOPICS_TABLE . '
+				FROM ' . $this->tables['topics'] . '
 				WHERE topic_time > ' . (int)$interval;
 
 			$result				= $this->db->sql_query($sql);
@@ -268,7 +273,7 @@ class listener implements EventSubscriberInterface
 
 			// Total new users in the last 24 hours, counts inactive users as well
 			$sql = 'SELECT COUNT(user_id) AS new_users
-				FROM ' . USERS_TABLE . '
+				FROM ' . $this->tables['users'] . '
 				WHERE user_regdate > ' . (int)$interval;
 
 			$result				= $this->db->sql_query($sql);

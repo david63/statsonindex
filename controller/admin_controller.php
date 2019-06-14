@@ -9,8 +9,13 @@
 
 namespace david63\statsonindex\controller;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use david63\statsonindex\ext;
+use phpbb\config\config;
+use phpbb\request\request;
+use phpbb\template\template;
+use phpbb\user;
+use phpbb\language\language;
+use phpbb\log\log;
+use david63\statsonindex\core\functions;
 
 /**
 * Admin controller
@@ -35,23 +40,27 @@ class admin_controller implements admin_interface
 	/** @var \phpbb\log\log */
 	protected $log;
 
+	/** @var \david63\statsonindex\core\functions */
+	protected $functions;
+
 	/** @var string Custom form action */
 	protected $u_action;
 
 	/**
 	* Constructor for admin controller
 	*
-	* @param \phpbb\config\config		$config		Config object
-	* @param \phpbb\request\request		$request	Request object
-	* @param \phpbb\template\template	$template	Template object
-	* @param \phpbb\user				$user		User object
-	* @param phpbb\language\language	$language
-	* @param \phpbb\log\log				$log
+	* @param \phpbb\config\config					$config		Config object
+	* @param \phpbb\request\request					$request	Request object
+	* @param \phpbb\template\template				$template	Template object
+	* @param \phpbb\user							$user		User object
+	* @param \phpbb\language\language				$language	Language object
+	* @param \phpbb\log\log							$log		Log object
+	* @param \david63\statsonindex\core\functions	functions	Functions for the extension
 	*
 	* @return \david63\statsonindex\controller\admin_controller
 	* @access public
 	*/
-	public function __construct(\phpbb\config\config $config, \phpbb\request\request $request, \phpbb\template\template $template, \phpbb\user $user, \phpbb\language\language $language, \phpbb\log\log $log)
+	public function __construct(config $config, request $request, template $template, user $user, language $language, log $log, functions $functions)
 	{
 		$this->config		= $config;
 		$this->request		= $request;
@@ -59,6 +68,7 @@ class admin_controller implements admin_interface
 		$this->user			= $user;
 		$this->language		= $language;
 		$this->log			= $log;
+		$this->functions	= $functions;
 	}
 
 	/**
@@ -70,11 +80,13 @@ class admin_controller implements admin_interface
 	public function display_options()
 	{
 		// Add the language file
-		$this->language->add_lang('acp_statsonindex', 'david63/statsonindex');
+		$this->language->add_lang('acp_statsonindex', $this->functions->get_ext_namespace());
 
 		// Create a form key for preventing CSRF attacks
 		$form_key = 'stats_on_index';
 		add_form_key($form_key);
+
+		$back = false;
 
 		// Is the form being submitted
 		if ($this->request->is_set_post('submit'))
@@ -102,7 +114,12 @@ class admin_controller implements admin_interface
 			'HEAD_TITLE'		=> $this->language->lang('STATS_ON_INDEX'),
 			'HEAD_DESCRIPTION'	=> $this->language->lang('STATS_ON_INDEX_EXPLAIN'),
 
-			'VERSION_NUMBER'	=> ext::STATS_ON_INDEX_VERSION,
+			'NAMESPACE'			=> $this->functions->get_ext_namespace('twig'),
+
+			'S_BACK'			=> $back,
+			'S_VERSION_CHECK'	=> $this->functions->version_check(),
+
+			'VERSION_NUMBER'	=> $this->functions->get_this_version(),
 		));
 
 		// Set output vars for display in the template
@@ -114,7 +131,6 @@ class admin_controller implements admin_interface
 			'INCLUDE_SUMMARY'			=> isset($this->config['statsonindex_summary']) ? $this->config['statsonindex_summary'] : '',
 			'SHOW_STATS'				=> isset($this->config['statsonindex_stats']) ? $this->config['statsonindex_stats'] : '',
 			'SHOW_USERS'				=> isset($this->config['statsonindex_users']) ? $this->config['statsonindex_users'] : '',
-			'STATS_ON_INDEX_VERSION'	=> ext::STATS_ON_INDEX_VERSION,
 			'U_ACTION'					=> $this->u_action,
 		));
 	}
