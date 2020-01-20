@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "Display an extended statistics expandable panel on the board index.",
 	"version": "3.1.0",
-	"time": "2019-12-39",
+	"time": "2020-01-20",
 	"keywords": [
 		"phpbb",
 		"extension",
