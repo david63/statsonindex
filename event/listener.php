@@ -171,6 +171,7 @@ class listener implements EventSubscriberInterface
 
 				'USERS_PER_DAY'   		=> $this->language->lang('USER_PER_DAY', ($users_per_day == 0) ? $none : $users_per_day),
 				'USERS_PER_YEAR'    	=> $this->language->lang('USERS_PER_YEAR', ($users_per_year == 0) ? $none : $users_per_year),
+				
 				'USERS_TFHOUR_TOTAL'	=> $this->language->lang('USERS_TFHOUR_TOTAL', ($active_user_count == 0) ? $none : (int)$active_user_count),
 
 				'START_DATE'        	=> $this->user->format_date($this->config['board_startdate']),
