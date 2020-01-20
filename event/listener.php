@@ -153,24 +153,24 @@ class listener implements EventSubscriberInterface
 
 			$this->template->assign_vars(array(
 				'FILES_PER_DAY'   		=> $this->language->lang('FILE_PER_DAY', ($files_per_day == 0) ? $none : $files_per_day),
-    			'FILES_PER_USER'   		=> $this->language->lang('FILES_PER_USER', ($files_per_user == 0) ? $none : $files_per_user),
+				'FILES_PER_USER'   		=> $this->language->lang('FILES_PER_USER', ($files_per_user == 0) ? $none : $files_per_user),
 				'FILES_PER_YEAR'    	=> $this->language->lang('FILES_PER_YEAR', ($files_per_year == 0) ? $none : $files_per_year),
 
 				'POSTS_PER_DAY'   		=> $this->language->lang('POST_PER_DAY', ($posts_per_day == 0) ? $none : $posts_per_day),
-    			'POSTS_PER_TOPIC'   	=> $this->language->lang('POSTS_PER_TOPIC', ($posts_per_topic == 0) ? $none : $posts_per_topic),
-    			'POSTS_PER_USER'   		=> $this->language->lang('POSTS_PER_USER', ($posts_per_user == 0) ? $none : $posts_per_user),
+				'POSTS_PER_TOPIC'   	=> $this->language->lang('POSTS_PER_TOPIC', ($posts_per_topic == 0) ? $none : $posts_per_topic),
+				'POSTS_PER_USER'   		=> $this->language->lang('POSTS_PER_USER', ($posts_per_user == 0) ? $none : $posts_per_user),
 				'POSTS_PER_YEAR'    	=> $this->language->lang('POSTS_PER_YEAR', ($posts_per_year == 0) ? $none : $posts_per_year),
 
 				'TFHOUR_POSTS'			=> $this->language->lang('TFHOUR_POSTS', ($tf_posts == 0) ? $none : $tf_posts),
 				'TFHOUR_TOPICS'			=> $this->language->lang('TFHOUR_TOPICS', ($tf_topics == 0) ? $none : $tf_topics),
 				'TFHOUR_USERS'			=> $this->language->lang('TFHOUR_USERS', ($tf_users == 0) ? $none : $tf_users),
-    			'TOPICS_PER_DAY'   		=> $this->language->lang('TOPIC_PER_DAY', ($topics_per_day == 0) ? $none : $topics_per_day),
+				'TOPICS_PER_DAY'   		=> $this->language->lang('TOPIC_PER_DAY', ($topics_per_day == 0) ? $none : $topics_per_day),
 				'TOPICS_PER_USER'   	=> $this->language->lang('TOPICS_PER_USER', ($topics_per_user == 0) ? $none : $topics_per_user),
-    			'TOPICS_PER_YEAR'   	=> $this->language->lang('TOPICS_PER_YEAR', ($topics_per_year == 0) ? $none : $topics_per_year),
-    			'TOTAL_FILES'    		=> $this->language->lang('TOTAL_FILES', ($total_files == 0) ? $none : $total_files),
+				'TOPICS_PER_YEAR'   	=> $this->language->lang('TOPICS_PER_YEAR', ($topics_per_year == 0) ? $none : $topics_per_year),
+				'TOTAL_FILES'    		=> $this->language->lang('TOTAL_FILES', ($total_files == 0) ? $none : $total_files),
 
-    			'USERS_PER_DAY'   		=> $this->language->lang('USER_PER_DAY', ($users_per_day == 0) ? $none : $users_per_day),
-    			'USERS_PER_YEAR'    	=> $this->language->lang('USERS_PER_YEAR', ($users_per_year == 0) ? $none : $users_per_year),
+				'USERS_PER_DAY'   		=> $this->language->lang('USER_PER_DAY', ($users_per_day == 0) ? $none : $users_per_day),
+				'USERS_PER_YEAR'    	=> $this->language->lang('USERS_PER_YEAR', ($users_per_year == 0) ? $none : $users_per_year),
 				'USERS_TFHOUR_TOTAL'	=> $this->language->lang('USERS_TFHOUR_TOTAL', ($active_user_count == 0) ? $none : (int)$active_user_count),
 
 				'START_DATE'        	=> $this->user->format_date($this->config['board_startdate']),
@@ -197,10 +197,10 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
- 	* Obtain an array of active users over the last 24 hours.
- 	*
- 	* @return array
- 	*/
+	* Obtain an array of active users over the last 24 hours.
+	*
+	* @return array
+	*/
 	protected function obtain_active_user_data()
 	{
 		if (($active_users = $this->cache->get('_active_users')) === false)
@@ -226,7 +226,7 @@ class listener implements EventSubscriberInterface
 
 			while ($row = $this->db->sql_fetchrow($result))
 			{
-         		$active_users[$row['user_id']] = $row;
+				$active_users[$row['user_id']] = $row;
 			}
 			$this->db->sql_freeresult($result);
 
@@ -235,13 +235,13 @@ class listener implements EventSubscriberInterface
 		}
 
 		return $active_users;
-   	}
+	}
 
 	/**
- 	* Obtained cached 24 hour activity data
- 	*
- 	* @return array
- 	*/
+	* Obtained cached 24 hour activity data
+	*
+	* @return array
+	*/
 	protected function obtain_activity_data()
 	{
 		if (($activity = $this->cache->get('_activity_mod')) === false)
@@ -254,7 +254,7 @@ class listener implements EventSubscriberInterface
 			// Total new posts in the last 24 hours
 			$sql = 'SELECT COUNT(post_id) AS new_posts
 				FROM ' . $this->tables['posts'] . '
-				WHERE post_time > ' . (int)$interval;
+				WHERE post_time > ' . (int) $interval;
 
 			$result				= $this->db->sql_query($sql);
 			$activity['posts']	= $this->db->sql_fetchfield('new_posts');
@@ -264,7 +264,7 @@ class listener implements EventSubscriberInterface
 			// Total new topics in the last 24 hours
 			$sql = 'SELECT COUNT(topic_id) AS new_topics
 				FROM ' . $this->tables['topics'] . '
-				WHERE topic_time > ' . (int)$interval;
+				WHERE topic_time > ' . (int) $interval;
 
 			$result				= $this->db->sql_query($sql);
 			$activity['topics']	= $this->db->sql_fetchfield('new_topics');
@@ -274,7 +274,7 @@ class listener implements EventSubscriberInterface
 			// Total new users in the last 24 hours, counts inactive users as well
 			$sql = 'SELECT COUNT(user_id) AS new_users
 				FROM ' . $this->tables['users'] . '
-				WHERE user_regdate > ' . (int)$interval;
+				WHERE user_regdate > ' . (int) $interval;
 
 			$result				= $this->db->sql_query($sql);
 			$activity['users']	= $this->db->sql_fetchfield('new_users');
