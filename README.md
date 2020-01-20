@@ -9,8 +9,8 @@ Display an extended statistics expandable panel on the board index.
 [![Total Downloads](https://poser.pugx.org/david63/statsonindex/downloads)](https://packagist.org/packages/david63/statsonindex)
 
 ## Minimum Requirements
-* phpBB 3.2.0
-* PHP 5.4
+* phpBB 3.3.0
+* PHP 7.1.3
 
 ## Install
 1. [Download the latest release](https://github.com/david63/statsonindex/archive/3.2.zip) and unzip it.

@@ -50,25 +50,10 @@ $lang = array_merge($lang, array(
 	'INCLUDE_SUMMARY'			=> 'Repeat summary items',
 	'INCLUDE_SUMMARY_EXPLAIN'	=> 'Include the summary items with the extended statistics.',
 
-	'NEW_VERSION'				=> 'New Version',
-	'NEW_VERSION_EXPLAIN'		=> 'There is a newer version of this extension available.',
-
 	'SHOW_STATS'				=> 'Show extended statistics',
 	'SHOW_STATS_EXPLAIN'		=> 'Show the extended statistics on the index page.',
 	'SHOW_USERS'				=> 'Show user statistics',
 	'SHOW_USERS_EXPLAIN'		=> 'Show the user visited in the last 24 hours statistics on the index page.',
 	'STATS_ON_INDEX_EXPLAIN'	=> 'Here you can set the display options for the displaying of extended statistics.',
 	'STATS_ON_INDEX_OPTIONS'	=> 'Extended statistics options',
-
-	'VERSION'					=> 'Version',
-));
-
-// Donate
-$lang = array_merge($lang, array(
-	'DONATE'					=> 'Donate',
-	'DONATE_EXTENSIONS'			=> 'Donate to my extensions',
-	'DONATE_EXTENSIONS_EXPLAIN'	=> 'This extension, as with all of my extensions, is totally free of charge. If you have benefited from using it then please consider making a donation by clicking the PayPal donation button opposite - I would appreciate it. I promise that there will be no spam nor requests for further donations, although they would always be welcome.',
-
-	'PAYPAL_BUTTON'				=> 'Donate with PayPal button',
-	'PAYPAL_TITLE'				=> 'PayPal - The safer, easier way to pay online!',
 ));
