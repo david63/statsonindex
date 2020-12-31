@@ -205,7 +205,7 @@ class listener implements EventSubscriberInterface
 	{
 		if (($active_users = $this->cache->get('_active_users')) === false)
 		{
-			$active_users = array();
+			$active_users = [];
 
 			// Grab a list of users who are currently online and users who have visited in the last 24 hours
 			$sql_ary = array(
@@ -249,7 +249,7 @@ class listener implements EventSubscriberInterface
 			// Set interval to 24 hours ago
 			$interval = time() - 86400;
 
-			$activity = array();
+			$activity = [];
 
 			// Total new posts in the last 24 hours
 			$sql = 'SELECT COUNT(post_id) AS new_posts
