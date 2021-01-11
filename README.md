@@ -10,7 +10,6 @@ Display an extended statistics expandable panel on the board index.
 [![codecov](https://codecov.io/gh/david63/statsonindex/branch/master/graph/badge.svg?token=D2500PgRex)](https://codecov.io/gh/david63/statsonindex)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5001b25c12b54b0489389d4bd47bfe6d)](https://www.codacy.com/manual/david63/statsonindex?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=david63/statsonindex&amp;utm_campaign=Badge_Grade)
 
-[![Compatible](https://img.shields.io/badge/compatible-phpBB:3.2.x-blue.svg)](https://shields.io/)
 [![Compatible](https://img.shields.io/badge/compatible-phpBB:3.3.x-blue.svg)](https://shields.io/)
 
 ## Minimum Requirements

@@ -4,5 +4,5 @@
 		var hideText = '{{ lang('HIDE') | escape('js') }}';
 	</script>
 
-	{% INCLUDEJS '@david63_statsonindex/statsonindex_fn.js' %}
+	{% INCLUDEJS '@' ~ SI_NAMESPACE ~ '/statsonindex_fn.js' %}
 {% endif %}
