@@ -43,7 +43,7 @@ class main_controller
 	/** @var language */
 	protected $language;
 
-	/** @var string phpBB tables */
+	/** @var array phpBB tables */
 	protected $tables;
 
 	/**
